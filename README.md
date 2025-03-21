@@ -1,3 +1,3 @@
 cargo bootimage
-cargo run -- -display curses
+cargo run
 退出 Alt+2 q
