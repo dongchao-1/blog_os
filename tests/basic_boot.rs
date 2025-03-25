@@ -9,6 +9,8 @@ use blog_os::test_panic_handler;
 
 #[unsafe(no_mangle)]
 pub extern "C" fn _start() -> ! {
+    blog_os::init();
+    
     test_main();
 
     loop {}
