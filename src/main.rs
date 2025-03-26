@@ -26,11 +26,22 @@ pub extern "C" fn _start() -> ! {
     // panic!("asd");
 
     blog_os::init();
-    x86_64::instructions::interrupts::int3();
+    // x86_64::instructions::interrupts::int3();
+
+    // unsafe {
+    //     *(0xdeadbeef as *mut u8) = 42;
+    // };
+
+    // fn stack_overflow() {
+    //     stack_overflow(); // for each recursion, the return address is pushed
+    // }
+
+    // // trigger a stack overflow
+    // stack_overflow();
 
     #[cfg(test)]
     test_main();
-    
+
     println!("It did not crash!");
 
     loop {}
