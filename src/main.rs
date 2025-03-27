@@ -5,13 +5,13 @@
 #![reexport_test_harness_main = "test_main"]
 
 use core::panic::PanicInfo;
-use blog_os::println;
+use blog_os::{hlt_loop, println};
 
 #[cfg(not(test))] // new attribute
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
     println!("{}", info);
-    loop {}
+    hlt_loop()
 }
 
 #[cfg(test)]
@@ -44,7 +44,12 @@ pub extern "C" fn _start() -> ! {
 
     println!("It did not crash!");
 
-    loop {}
+    // loop {
+    //     use blog_os::print;
+    //     print!("-");        // new
+    // }
+
+    hlt_loop()
 }
 
 #[test_case]
